@@ -1,0 +1,74 @@
+<div class="container main-container">
+    <h1>Novo Usuário</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="adicionarUsuario()" [formGroup]="usuarioForm">
+                <div class="alert alert-danger" *ngIf="errors.length > 0">
+                    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome" class="control-label">Nome</label>
+                    <div>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome}" />
+                        <span class="text-danger" *ngIf="displayMessage.nome">
+                            <p [innerHTML]="displayMessage.nome"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sobrenome" class="control-label">Sobrenome</label>
+                    <div>
+                        <input type="text" class="form-control" id="sobrenome" placeholder="sobrenome (requerido)" formControlName="sobrenome" [ngClass]="{'is-invalid': displayMessage.sobrenome}" />
+                        <span class="text-danger" *ngIf="displayMessage.sobrenome">
+                            <p [innerHTML]="displayMessage.sobrenome"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <div>
+                        <input type="text" class="form-control" id="email" placeholder="Email (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email}" />
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                            <p [innerHTML]="displayMessage.email"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="datanascimento" class="control-label">Data Nascimento</label>
+                    <div>
+                        <input type="date" class="form-control" id="datanascimento" placeholder="Data Nascimento (requerido)" formControlName="dataNascimento" [ngClass]="{'ins-invalid': displayMessage.dataNascimento}" />
+                        <span class="text-danger" *ngIf="displayMessage.dataNascimento">
+                            <p [innerHTML]="displayMessage.dataNascimento"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="escolaridade" class="control-label">Escolaridade</label>
+                    <select class="form-control" id="escolaridade" formControlName="escolaridade" [ngClass]="{'is-invalid': displayMessage.escolaridade}">
+                        <option value="" disabled selected>Selecione sua opção</option>
+                        <option *ngFor="let escolaridade of escolaridades" value="{{ escolaridade.id }}">{{ escolaridade.descricao }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.escolaridade">
+                        <p [innerHTML]="displayMessage.escolaridade"></p>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" id="cadastroUsuario" value="Cadastrar" class="btn btn-primary" [disabled]="!usuarioForm.valid">&nbsp;
+                    <a class="btn btn-info" [routerLink]="['/usuario/listar']">Voltar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

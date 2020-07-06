@@ -1,0 +1,77 @@
+<div class="container main-container">
+    <h1>Deletar Usuário</h1>
+    <hr />
+    <form novalidate="novalidate" (ngSubmit)="deletarUsuario()" [formGroup]="usuarioForm">
+        <div class="alert aler-danger" *ngIf="errors.length > 0">
+            <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+            <ul>
+                <li *ngFor="let error of errors"> {{ error }}</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="nome" class="control-label">Nome</label>
+            <div>
+                <input type="text" class="form-control" id="nome" placeholder="Nome (requetido)"
+                    formControlName="nome" [ngClass]="{'is-invalid': displayMessage.Nome}" [attr.disabled]="false" />
+                <span class="text-danger" *ngIf="displayMessage.Nome">
+                    <p [innerHTML]="displayMessage.Nome"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sobrenome" class="control-label">Sobrenome</label>
+            <div>
+                <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome (requetido)"
+                    formControlName="sobrenome" [ngClass]="{'is-invalid': displayMessage.Sobrenome}" [attr.disabled]="false" />
+                <span class="text-danger" *ngIf="displayMessage.Sobrenome">
+                    <p [innerHTML]="displayMessage.Sobrenome"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <div>
+                <input type="text" class="form-control" id="email" placeholder="Email (requetido)"
+                    formControlName="email" [ngClass]="{'is-invalid': displayMessage.Email}" [attr.disabled]="false" />
+                <span class="text-danger" *ngIf="displayMessage.Email">
+                    <p [innerHTML]="displayMessage.Email"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="datanascimento" class="control-label">Data Nascimento</label>
+            <div>
+                <input type="date" class="form-control" id="datanascimento" placeholder="Data Nascimento (requetido)"
+                    formControlName="dataNascimento" [ngClass]="{'is-invalid': displayMessage.DataNascimento}" [attr.disabled]="false" />
+                <span class="text-danger" *ngIf="displayMessage.DataNascimento">
+                    <p [innerHTML]="displayMessage.DataNascimento"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="escolaridade" class="control-label">Escolaridade</label>
+            <div>
+                <select id="escolaridade" class="form-control" formControlName="escolaridade"
+                    [ngClass]="{'is-invalid': displayMessage.Escolaridade}" [attr.disabled]="false">
+                    <option value="" disabled selected>Selecione sua opção</option>
+                    <option *ngFor="let escolaridade of escolaridades" value="{{ escolaridade.id }}">
+                        {{ escolaridade.descricao }}</option>
+                </select>
+                <span class="text-danger" *ngIf="displayMessage.Escolaridade">
+                    <p [innerHTML]="displayMessage.Escolaridade"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input id="excluirUsuario" type="submit" class="btn btn-danger" [disabled]="!usuarioForm.valid" value="Excluir">&nbsp;
+            <a class="btn btn-info" [routerLink]="['/usuario/listar']">Voltar</a>
+        </div>
+
+    </form>
+</div>
