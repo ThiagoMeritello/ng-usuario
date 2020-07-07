@@ -45,7 +45,7 @@ export class AdicionarComponent extends FormBaseComponent implements OnInit, Aft
         email: 'Email inválido'
       },
       dataNascimento: {
-        required: 'Informe a Imagem',
+        required: 'Informe a data nascimento',
         maxDate: 'Data de nascimento é maior que a data atual'
       },
       escolaridade: {
@@ -68,8 +68,6 @@ export class AdicionarComponent extends FormBaseComponent implements OnInit, Aft
     .map((esc) => {
       this.escolaridades.push(esc); 
     });
-
-    console.log(new Date(this.dataAtual));
   }
 
   ngAfterViewInit(): void {

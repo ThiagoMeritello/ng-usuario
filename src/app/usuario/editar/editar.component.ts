@@ -45,7 +45,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit, AfterV
         email: 'Email inválido'
       },
       dataNascimento: {
-        required: 'Informe a Imagem',
+        required: 'Informe a data nascimento',
         maxDate: 'Data de nascimento é maior que a data atual'
       },
       escolaridade: {
@@ -67,8 +67,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit, AfterV
 
     this.usuarioService.obterEscolaridades()
       .map((esc) => this.escolaridades.push(esc));
-   
-      console.log(this.usuario.dataNascimento);
+      
     this.usuarioForm.patchValue({
       id: this.usuario.id,
       nome: this.usuario.nome,

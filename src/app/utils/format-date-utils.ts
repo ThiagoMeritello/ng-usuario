@@ -1,8 +1,5 @@
-import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-
 export class FormatDateUtils {
     public static FormatarDateParaStringData(date: Date): string {
-        console.log(date);
         if (date === null) return null;
 
         let ano = this.padLeft(date.getFullYear().toString(), '0', 4);
